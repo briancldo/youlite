@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
+import { useFetch } from '../../utils/fetch';
 
 export default function HomePage() {
-  return <p>homepage</p>;
+  const data = useFetch('get', 'http://localhost:5000/', {}, '');
+
+  return <p>{data}</p>;
 }
