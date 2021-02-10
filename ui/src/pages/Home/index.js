@@ -1,10 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 export default function HomePage() {
-  const [data, setData] = useState({});
-  const token = 'ya29.A0AfH6SMCtbU7uKO8ENiG-mLCNdvbK16YfdFWLUwotBMlU_QTh0axcDViyfN9myMSQi8BbVRraK3ZuZJ6DVtwx5iY3WzqDHE-yvtT4TJypbDuB7RINqSI9JEADoPWbmz0VAw9gkJ-HdLjyfyV0tx9HwzYVR3TP';
+  const [query, setQuery] = useState('');
 
+  function queryOnChange(event) {
+    setQuery(event.target.value);
+  }
 
-  console.log({ data });
-  return <h1>Home</h1>;
+  function executeSearch() {
+    console.log(query);
+  }
+
+  return (
+    <>
+      <TextField value={query} onChange={queryOnChange} />
+      <Button onClick={executeSearch}>Search</Button>
+    </>
+  );
 }
