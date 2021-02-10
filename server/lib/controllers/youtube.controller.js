@@ -7,6 +7,14 @@ async function getChannels(request, response) {
   response.send(data);
 }
 
+async function search(request, response) {
+  const { query } = request.query;
+
+  const data = await youtubeService.search(query);
+  response.send(data);
+}
+
 module.exports = {
   getChannels,
+  search,
 };
