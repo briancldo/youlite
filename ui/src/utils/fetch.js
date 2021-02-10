@@ -13,7 +13,7 @@ function useFetch(method, url, body = {}, defaultValue) {
       setData(response.data);
     }
     fetch();
-  }, [body, method, _url]);
+  }, [body, method,_url]);
 
   return data;
 }

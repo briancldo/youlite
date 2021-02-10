@@ -2,6 +2,7 @@ import { useHistory } from 'react-router-dom';
 
 const routes = {
   login: '/login',
+  search: '/search',
   home: '/',
 };
 
@@ -11,7 +12,17 @@ function slashify(route) {
   return route;
 }
 
-function applyParameters(route, params) {
+function getQueryString(query) {
+  const queryParts = [];
+
+  for (const key in query) {
+    queryParts.push(`${key}=${query[key]}`);
+  }
+
+  return queryParts.join('&');
+}
+
+function applyParameters(route, params, query) {
   const routeParts = route.split('/');
   const parameterized = [];
 
@@ -25,14 +36,16 @@ function applyParameters(route, params) {
       );
     parameterized.push(replacement);
   }
-  return parameterized.join('/');
+
+  const queryString = getQueryString(query);
+  return parameterized.join('/').concat(`?${queryString}`);
 }
 
 function useNavigate(page, navigationType) {
   const route = slashify(page);
   const history = useHistory();
-  return (params = {}, state = {}) =>
-    history[navigationType](applyParameters(route, params), state);
+  return (params = {}, query = {}, state = {}) =>
+    history[navigationType](applyParameters(route, params, query), state);
 }
 
 function useRedirect(page) {
@@ -43,4 +56,18 @@ function useReplace(page) {
   return useNavigate(page, 'replace');
 }
 
-export { useRedirect, useReplace, routes };
+function getQueryObject(queryString) {
+  if (!queryString) return {};
+
+  const _queryString = queryString.slice(1);
+  const queryParts = _queryString.split('&');
+  const queryObject = {};
+  queryParts.forEach(part => {
+    const [key, value] = part.split('=');
+    queryObject[key] = value;
+  });
+
+  return queryObject;
+}
+
+export { useRedirect, useReplace, routes, getQueryObject };

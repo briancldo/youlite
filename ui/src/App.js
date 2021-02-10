@@ -5,6 +5,7 @@ import './App.css';
 import { routes } from './utils/navigation';
 import LoginPage from './pages/Login';
 import HomePage from './pages/Home';
+import SearchPage from './pages/Search';
 
 function App() {
   return (
@@ -13,6 +14,9 @@ function App() {
         <Switch>
           <Route path={routes.login}>
             <LoginPage />
+          </Route>
+          <Route path={routes.search}>
+            <SearchPage />
           </Route>
           <Route path={routes.home}>
             <HomePage />
