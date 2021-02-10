@@ -1,3 +1,8 @@
 {
-  "domain": "http://localhost:5000"
+  "domain": "http://localhost:5000",
+  "oauth": {
+    "google": {
+      "clientId": "48852788608-m2615lmtbjha1mjq83db5qpdj6u6h2ri.apps.googleusercontent.com"
+    }
+  }
 }

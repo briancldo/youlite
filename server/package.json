@@ -4,14 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon lib/app"
+    "start": "NODE_ENV=development nodemon lib/app"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cors": "2.8.5",
+    "env": "file:lib/env",
     "express": "4.17.1",
+    "googleapis": "67.0.0",
     "nodemon": "2.0.7"
   }
 }
