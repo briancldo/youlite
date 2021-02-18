@@ -14,7 +14,12 @@ async function search(request, response) {
   response.send(data);
 }
 
+async function getSubscriptions(request, response) {
+  return;
+}
+
 module.exports = {
   getChannels,
   search,
+  getSubscriptions,
 };
