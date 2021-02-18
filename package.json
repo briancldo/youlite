@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "concurrently": "5.3.0"
   },
-  "devDependencies": {},
   "scripts": {
     "dev": "concurrently \"npm start --prefix ui\" \"npm start --prefix server\""
   },

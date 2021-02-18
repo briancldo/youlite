@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=development nodemon lib/app"
+    "start": "NODE_ENV=development nodemon lib/app.local"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +14,8 @@
     "env": "file:lib/env",
     "express": "4.17.1",
     "googleapis": "67.0.0",
-    "nodemon": "2.0.7"
-  }
+    "nodemon": "2.0.7",
+    "serverless-http": "2.7.0"
+  },
+  "devDependencies": {}
 }
