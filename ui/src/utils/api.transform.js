@@ -54,6 +54,7 @@ function transformPlaylistResults(results) {
       id: playlist.id,
       title: playlist.snippet.title,
       description: playlist.snippet.description,
+      thumbnailUrl: playlist.snippet.thumbnails.medium.url,
     }));
   return filterPlaylists(slimPlaylistData) || [];
 }

@@ -33,18 +33,19 @@ async function getPlaylistVideosFromId(id) {
   return transformService.transformPlaylistVideosResults(response.data);
 }
 
-async function getPlaylistVideosFromPlaylist(playlist) {
-  const playlistVideosPromises = playlist.map(async item => ({
-    videos: await getPlaylistVideosFromId(item.id),
-    title: item.title,
-    description: item.description,
+async function getPlaylistVideosFromPlaylists(playlists) {
+  const playlistVideosPromises = playlists.map(async playlist => ({
+    videos: await getPlaylistVideosFromId(playlist.id),
+    title: playlist.title,
+    description: playlist.description,
+    thumbnailUrl: playlist.thumbnailUrl,
   }));
   return Promise.all(playlistVideosPromises);
 }
 
 async function getPlaylists() {
   const playlistData = await getPlaylistsData();
-  return await getPlaylistVideosFromPlaylist(playlistData);
+  return await getPlaylistVideosFromPlaylists(playlistData);
 }
 
 export {
