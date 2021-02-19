@@ -1,25 +1,17 @@
-import React, { useState } from 'react';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import React from 'react';
 
-import { useRedirect, routes } from '../../utils/navigation';
+import { useInitializeState } from '../../utils/initializeState';
+import { getPlaylists } from '../../utils/youtube.api';
 
 export default function HomePage() {
-  const [query, setQuery] = useState('');
-  const navigateToSearch = useRedirect(routes.search);
+  const [playlists, setPlaylists] = useInitializeState(getPlaylists);
 
-  function queryOnChange(event) {
-    setQuery(event.target.value);
-  }
-
-  function executeSearch() {
-    navigateToSearch({}, { query });
-  }
+  console.log({ playlists })
 
   return (
     <>
-      <TextField value={query} onChange={queryOnChange} />
-      <Button onClick={executeSearch}>Search</Button>
+      <h1>Playlists</h1>
+      <p>{JSON.stringify(playlists, null, 2)}</p>
     </>
   );
 }

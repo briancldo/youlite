@@ -1,3 +1,5 @@
+import { setToken } from '../data/token';
+
 async function authenticate(provider, providerResponse) {
   const handler = providerHandlers[provider];
   if (!handler) throw new Error('Invalid provider.');
@@ -7,7 +9,8 @@ async function authenticate(provider, providerResponse) {
 
 const providerHandlers = {
   google: async (googleResponse) => {
-    console.log({ googleResponse });
+    const token = googleResponse.uc.access_token;
+    setToken(token);
   },
 };
 
