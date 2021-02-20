@@ -4,6 +4,7 @@ const routes = {
   login: '/login',
   search: '/search',
   playlist: '/playlist',
+  video: '/video',
   home: '/',
 };
 

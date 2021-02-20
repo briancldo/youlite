@@ -7,6 +7,7 @@ import LoginPage from './pages/Login';
 import HomePage from './pages/Home';
 import SearchPage from './pages/Search';
 import PlaylistPage from './pages/Playlist';
+import VideoPage from './pages/Video';
 
 function App() {
   console.log('App');
@@ -22,6 +23,9 @@ function App() {
           </Route>
           <Route path={routes.playlist}>
             <PlaylistPage />
+          </Route>
+          <Route path={routes.video}>
+            <VideoPage />
           </Route>
           <Route path={routes.home}>
             <HomePage />
