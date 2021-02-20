@@ -10,7 +10,6 @@ import PlaylistPage from './pages/Playlist';
 import VideoPage from './pages/Video';
 
 function App() {
-  console.log('App');
   return (
     <div className="app">
       <Router>
