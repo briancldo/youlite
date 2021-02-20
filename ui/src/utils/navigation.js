@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 const routes = {
   login: '/login',
   search: '/search',
+  playlist: '/playlist',
   home: '/',
 };
 
