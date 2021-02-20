@@ -5,6 +5,10 @@ function getPlaylists() {
   return getStore().getState().playlist;
 }
 
+function getPlaylistsDataList() {
+  return Object.values(getPlaylists()).map(playlist => playlist.metadata);
+}
+
 function getPlaylist(id) {
   const playlist = getPlaylists()[id];
   if (!playlist) throw new Error(`No such playlist: ${id}`);
@@ -17,6 +21,7 @@ function getVideos(playlistId) {
 
 const get = {
   playlists: getPlaylists,
+  playlistsDataList: getPlaylistsDataList,
   playlist: getPlaylist,
   videos: getVideos,
 };

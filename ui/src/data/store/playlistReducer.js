@@ -1,12 +1,15 @@
 function cachePlaylistList(state, action) {
   const { playlistsData } = action;
+  const playlistsDataMap = {};
+  playlistsData.forEach(playlist => {
+    playlistsDataMap[playlist.id] = {
+      metadata: playlist,
+    };
+  });
 
   return {
     ...state,
-    [playlistsData.id]: {
-      ...state[playlistsData.id],
-      metadata: playlistsData,
-    }
+    ...playlistsDataMap,
   };
 }
 

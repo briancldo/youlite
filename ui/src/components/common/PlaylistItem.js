@@ -7,6 +7,7 @@ export default function PlaylistItem(props) {
   const { playlistData } = props
   const { thumbnailUrl, title } = playlistData;
   const navigateToPlaylist = useRedirect(routes.playlist);
+  console.log({ playlistData });
 
   function navigateToPlaylistWithState() {
     navigateToPlaylist({}, {}, { playlistTitle: title, playlistId: playlistData.id });
