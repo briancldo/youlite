@@ -5,11 +5,11 @@ import { useRedirect, routes } from '../../utils/navigation';
 
 export default function PlaylistItem(props) {
   const { playlistData } = props
-  const { thumbnailUrl, title, videos } = playlistData;
+  const { thumbnailUrl, title } = playlistData;
   const navigateToPlaylist = useRedirect(routes.playlist);
 
   function navigateToPlaylistWithState() {
-    navigateToPlaylist({}, {}, { playlistTitle: title, videos });
+    navigateToPlaylist({}, {}, { playlistTitle: title, playlistId: playlistData.id });
   }
 
   return (

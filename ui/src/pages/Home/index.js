@@ -4,12 +4,12 @@ import Button from '@material-ui/core/Button';
 import './index.css';
 
 import { useInitializeState } from '../../utils/initializeData';
-import { getPlaylists } from '../../utils/youtube.api';
+import { getPlaylistsData } from '../../utils/youtube.api';
 import { useRedirect, routes } from '../../utils/navigation';
 import PlaylistList from '../../components/common/PlaylistList';
 
 export default function HomePage() {
-  const [playlistsData] = useInitializeState(getPlaylists, [], []);
+  const [playlistsData] = useInitializeState(getPlaylistsData, [], []);
   const navigateToLogin = useRedirect(routes.login);
 
   return (

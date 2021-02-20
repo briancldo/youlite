@@ -7,7 +7,7 @@ export default function VideosList(props) {
   const { videos } = props;
 
   return (
-    <div class='list'>
+    <div className='list'>
       {
         videos.map((video, index) => (
           <div key={`video${index}`}>

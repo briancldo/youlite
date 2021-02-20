@@ -22,7 +22,7 @@ async function getPlaylistsData() {
   return transformService.transformPlaylistResults(response.data);
 }
 
-async function getPlaylistVideosFromId(id) {
+async function getVideosByPlaylistId(id) {
   const query = {
     part: 'snippet,contentDetails',
     maxResults: 50,
@@ -33,9 +33,9 @@ async function getPlaylistVideosFromId(id) {
   return transformService.transformPlaylistVideosResults(response.data);
 }
 
-async function getPlaylistVideosFromPlaylists(playlists) {
+async function getVideosFromPlaylists(playlists) {
   const playlistVideosPromises = playlists.map(async playlist => ({
-    videos: await getPlaylistVideosFromId(playlist.id),
+    videos: await getVideosByPlaylistId(playlist.id),
     title: playlist.title,
     description: playlist.description,
     thumbnailUrl: playlist.thumbnailUrl,
@@ -45,9 +45,12 @@ async function getPlaylistVideosFromPlaylists(playlists) {
 
 async function getPlaylists() {
   const playlistData = await getPlaylistsData();
-  return await getPlaylistVideosFromPlaylists(playlistData);
+  return await getVideosFromPlaylists(playlistData);
 }
 
 export {
+  getPlaylistsData,
+  getVideosByPlaylistId,
+  getVideosFromPlaylists,
   getPlaylists,
 };
