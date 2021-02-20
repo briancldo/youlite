@@ -7,7 +7,6 @@ export default function SearchPage() {
   const queryString = useLocation().search;
   const query = getQueryObject(queryString).query;
   const results = useFetch('get', `/search${queryString}`);
-  console.log({ queryString, results });
 
   return <h1>Search results for "{query}"</h1>;
 }

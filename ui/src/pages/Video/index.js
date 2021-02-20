@@ -5,7 +5,6 @@ import { getQueryObject } from '../../utils/navigation';
 
 function VideoUI(props) {
   const { id, title, description, uploader } = props;
-  console.log({id})
 
   return (
     <div>

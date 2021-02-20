@@ -8,8 +8,6 @@ import { useInitializeState } from '../../utils/initializeData';
 function PlaylistUI(props) {
   const { playlistTitle, videos } = props;
 
-  console.log({ playlistTitle, videos });
-
   return (
     <>
       <h1>{playlistTitle}</h1>
