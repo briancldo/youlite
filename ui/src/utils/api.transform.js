@@ -63,6 +63,7 @@ function transformPlaylistVideosResults(results) {
   const videoListData = results.items;
   return videoListData.map(video => ({
     id: video.snippet.resourceId.videoId,
+    title: video.snippet.title,
     thumbnailUrl: video.snippet.thumbnails.medium.url,
     uploader: video.snippet.videoOwnerChannelTitle,
     description: video.snippet.description,
