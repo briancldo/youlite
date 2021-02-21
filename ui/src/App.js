@@ -6,6 +6,7 @@ import './App.css';
 
 import { routes } from './utils/navigation';
 import { store, getStore } from './data/store';
+import { restorePlaylists } from './data/persistentStore';
 import LoginPage from './pages/Login';
 import HomePage from './pages/Home';
 import SearchPage from './pages/Search';
@@ -18,6 +19,8 @@ function printState() {
 }
 
 function App() {
+  restorePlaylists();
+
   return (
     <div className='app'>
       {

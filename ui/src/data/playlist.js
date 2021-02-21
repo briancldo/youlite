@@ -2,7 +2,7 @@ import { getStore } from './store';
 import { dispatch } from './store/load';
 
 function getPlaylists() {
-  return getStore().getState().playlist;
+  return getStore().getState().playlist || {};
 }
 
 function getPlaylistsDataList() {
@@ -16,7 +16,7 @@ function getPlaylist(id) {
 }
 
 function getVideos(playlistId) {
-  return getPlaylist(playlistId).videos;
+  return getPlaylist(playlistId).videos || [];
 }
 
 const get = {

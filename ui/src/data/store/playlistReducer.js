@@ -1,3 +1,5 @@
+import { set } from '../persistentStore';
+
 function cachePlaylistList(state, action) {
   const { playlistsData } = action;
   const playlistsDataMap = {};
@@ -7,27 +9,36 @@ function cachePlaylistList(state, action) {
     };
   });
 
-  return {
+  const newState = {
     ...state,
     ...playlistsDataMap,
   };
+  set('playlists', newState);
+  return newState;
 }
 
 function cachePlaylistVideos(state, action) {
   const { playlistId, videos } = action;
 
-  return {
+  const newState = {
     ...state,
     [playlistId]: {
       ...state[playlistId],
       videos,
     },
   };
+  set('playlists', newState);
+  return newState;
+}
+
+function restorePlaylists(state, action) {
+  return action.playlists;
 }
 
 const handlers = {
   CACHE_PLAYLIST_LIST: cachePlaylistList,
   CACHE_PLAYLIST_VIDEOS: cachePlaylistVideos,
+  RESTORE_PLAYLISTS: restorePlaylists,
 };
 
 const initialState = {};
