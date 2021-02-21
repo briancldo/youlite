@@ -24,6 +24,4 @@ export default async function request(method, url, body = {}) {
   } catch (error) {
     if (error.response.status === 401) removeToken();
   }
-
-  throw new Error(`Invalid method: ${method}`);
 }
