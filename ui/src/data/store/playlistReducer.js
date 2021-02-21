@@ -45,6 +45,6 @@ const initialState = {};
 
 export default function reducer(state = initialState, action) {
   const handler = handlers[action.type];
-  if (!handler) return initialState;
+  if (!handler) return state;
   return handler(state, action);
 }

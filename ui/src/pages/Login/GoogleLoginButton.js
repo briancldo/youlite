@@ -3,7 +3,7 @@ import { GoogleLogin } from 'react-google-login';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
 import { useReplace, routes } from '../../utils/navigation';
-import backendAuth from '../../utils/auth';
+import * as backendAuth from '../../utils/auth';
 import config from 'env';
 
 const useStyles = makeStyles({

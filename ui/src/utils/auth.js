@@ -14,4 +14,4 @@ const providerHandlers = {
   },
 };
 
-export default { authenticate };
+export { authenticate };
