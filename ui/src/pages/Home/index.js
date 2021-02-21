@@ -18,7 +18,7 @@ export default function HomePage() {
   if (!playlistsCached && playlistsData.length > 0) set.playlistsData(playlistsData);
 
   return (
-    <div className='main'>
+    <div className='homepage-main'>
       <Button onClick={navigateToLogin}>Go to Login</Button>
       <h1>Playlists</h1>
       <PlaylistList {...{playlistsData}} />
