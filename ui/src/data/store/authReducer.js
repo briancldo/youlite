@@ -5,8 +5,16 @@ function setToken(state, action) {
   };
 }
 
+function removeToken(state) {
+  return {
+    ...state,
+    token: undefined,
+  }
+}
+
 const handlers = {
   SET_TOKEN: setToken,
+  REMOVE_TOKEN: removeToken,
 };
 
 const initialState = {};

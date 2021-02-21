@@ -13,7 +13,13 @@ function setToken(token) {
   });
 }
 
+function removeToken() {
+  localStorage.removeItem('token');
+  dispatch({ type: 'REMOVE_TOKEN', });
+}
+
 export {
   getToken,
   setToken,
+  removeToken,
 };

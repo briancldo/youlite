@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 
 import { routes } from '../../utils/navigation';
 
-function PrivateRoute({ children, isLoggedIn, ...rest }) {
+function PrivateRoute({ children, token, ...rest }) {
   return (
     <Route
       {...rest}
       render={({ location }) =>
-        isLoggedIn ? (
+        token ? (
           children
         ) : (
           <Redirect
@@ -22,7 +22,7 @@ function PrivateRoute({ children, isLoggedIn, ...rest }) {
 }
 
 function mapStateToProps(state) {
-  return { isLoggedIn: state.user.isLoggedIn };
+  return { token: state.auth.token };
 }
 
 export default connect(mapStateToProps, null)(PrivateRoute);

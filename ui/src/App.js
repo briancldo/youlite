@@ -7,6 +7,7 @@ import './App.css';
 import { routes } from './utils/navigation';
 import { store, getStore } from './data/store';
 import { restoreData } from './data/persistentStore';
+import PrivateRoute from './components/common/PrivateRoute';
 import LoginPage from './pages/Login';
 import HomePage from './pages/Home';
 import SearchPage from './pages/Search';
@@ -33,18 +34,18 @@ function App() {
             <Route path={routes.login}>
               <LoginPage />
             </Route>
-            <Route path={routes.search}>
+            <PrivateRoute path={routes.search}>
               <SearchPage />
-            </Route>
-            <Route path={routes.playlist}>
+            </PrivateRoute>
+            <PrivateRoute path={routes.playlist}>
               <PlaylistPage />
-            </Route>
-            <Route path={routes.video}>
+            </PrivateRoute>
+            <PrivateRoute path={routes.video}>
               <VideoPage />
-            </Route>
-            <Route path={routes.home}>
+            </PrivateRoute>
+            <PrivateRoute path={routes.home}>
               <HomePage />
-            </Route>
+            </PrivateRoute>
           </Switch>
         </Router>
       </Provider>

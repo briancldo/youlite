@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getToken } from '../data/token';
+import { getToken, removeToken } from '../data/token';
 
 function getAccessToken() {
   return `Bearer ${getToken()}`;
@@ -14,12 +14,15 @@ export default async function request(method, url, body = {}) {
     },
   };
 
-  if (noBodyRequestMethods.includes(method)) {
-    return await axios[method](url, config);
-  }
-
-  if (withBodyRequestMethods.includes(method)) {
-    return await axios[method](url, body, config);
+  try {
+    if (noBodyRequestMethods.includes(method)) {
+      return await axios[method](url, config);
+    }
+    if (withBodyRequestMethods.includes(method)) {
+      return await axios[method](url, body, config);
+    }
+  } catch (error) {
+    if (error.response.status === 401) removeToken();
   }
 
   throw new Error(`Invalid method: ${method}`);
