@@ -15,10 +15,12 @@ export default function PlaylistItem(props) {
 
   return (
     <div className='playlist-item'>
-      <div className='playlist-item-card'>
+      <div className='playlist-item-wrapper'>
         <InteractiveCard onClick={navigateToPlaylistWithState}>
-          <img src={thumbnailUrl} alt={`Playlist ${title}`} />
-          <h1>{title}</h1>
+          <div className='playlist-item-content'>
+            <img src={thumbnailUrl} alt={`Playlist ${title}`} />
+            <h1>{title}</h1>
+          </div>
         </InteractiveCard>
       </div>
     </div>
