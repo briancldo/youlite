@@ -1,0 +1,9 @@
+.playlist-item {
+  height: 100%;
+  width: 100%;
+}
+
+.playlist-item-card {
+  height: 80%;
+  width: 80%;
+}

@@ -8,7 +8,7 @@ export default function PlaylistList(props) {
   const { playlistsData } = props;
 
   return ( 
-    <Grid container spacing={3} className='playlist-list'>
+    <Grid container className='playlist-list'>
       {playlistsData.map(playlistData => (
         <Grid item xs={4} lg={3} key={playlistData.title}>
           <PlaylistItem {...{playlistData}} />

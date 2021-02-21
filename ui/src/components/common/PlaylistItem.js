@@ -1,7 +1,8 @@
 import React from 'react';
-import Card from '@material-ui/core/Card';
+import InteractiveCard from './InteractiveCard';
 
 import { useRedirect, routes } from '../../utils/navigation';
+import './PlaylistItem.css';
 
 export default function PlaylistItem(props) {
   const { playlistData } = props
@@ -13,9 +14,13 @@ export default function PlaylistItem(props) {
   }
 
   return (
-    <Card onClick={navigateToPlaylistWithState}>
-      <img src={thumbnailUrl} alt={`Playlist ${title}`} />
-      <h1>{title}</h1>
-    </Card>
+    <div className='playlist-item'>
+      <div className='playlist-item-card'>
+        <InteractiveCard onClick={navigateToPlaylistWithState}>
+          <img src={thumbnailUrl} alt={`Playlist ${title}`} />
+          <h1>{title}</h1>
+        </InteractiveCard>
+      </div>
+    </div>
   );
 }
