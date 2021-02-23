@@ -1,19 +1,12 @@
 .interactive-card {
   border-bottom: solid;
-  border-bottom-width: 6px;
+  border-bottom-width: 10px;
   border-radius: 8px;
 }
 
-.interactive-card:hover {
-  transform: translateY(-3px);
-  transition: 0.25s;
-  border-bottom-width: 9px;
-  border-radius: 12px;
-}
-
 .interactive-card:active {
-  transform: translateY(4.5px);
+  transform: translateY(7px);
   transition: 0.1s;
-  border-bottom-width: 4.5px;
+  border-bottom-width: 3px;
   border-radius: 8px;
 }
