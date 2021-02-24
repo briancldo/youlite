@@ -6,3 +6,13 @@
   align-items: center;
   justify-content: center;
 }
+
+.app-content {
+  height: 90%;
+  width: 100%;
+}
+
+.app-navigation {
+  height: 10%;
+  width: 100%;
+}

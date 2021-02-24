@@ -4,8 +4,8 @@ import './InteractiveCard.css';
 
 export default function InteractiveCard(props) {
   return (
-    <p className='interactive-card'>
+    <div className='interactive-card'>
       <Card {...props} />
-    </p>
+    </div>
   );
 }

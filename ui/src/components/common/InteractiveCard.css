@@ -6,7 +6,7 @@
 
 .interactive-card:active {
   transform: translateY(7px);
-  transition: 0.1s;
+  transition: 0.05s;
   border-bottom-width: 3px;
   border-radius: 8px;
 }
