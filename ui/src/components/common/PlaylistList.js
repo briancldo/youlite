@@ -10,7 +10,7 @@ export default function PlaylistList(props) {
   return ( 
     <Grid container className='playlist-list'>
       {playlistsData.map(playlistData => (
-        <Grid item xs={4} lg={3} key={playlistData.title}>
+        <Grid item sm={12} md={4} lg={3} key={playlistData.title} className='playlist-list-item'>
           <PlaylistItem {...{playlistData}} />
         </Grid>
       ))}
