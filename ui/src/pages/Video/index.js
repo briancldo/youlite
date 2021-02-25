@@ -18,19 +18,17 @@ function VideoUI(props) {
 
   return (
     <div className='video-page-main'>
-      <div className='video-page-video-section'>
-        <h1>{title}</h1>
-        <iframe
-          width={`${Math.min(560, window.innerWidth)}`}
-          height='315'
-          src={`https://www.youtube.com/embed/${id}`}
-          title={title}
-          frameBorder='0'
-          allow='accelerometer;autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-          allowFullScreen="allowFullScreen">
-        </iframe>
-        <p>{uploader}</p>
-      </div>
+      <iframe
+        width={`${Math.min(560, window.innerWidth)}`}
+        height='315'
+        src={`https://www.youtube.com/embed/${id}`}
+        title={title}
+        frameBorder='0'
+        allow='accelerometer;autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+        allowFullScreen="allowFullScreen">
+      </iframe>
+      <h1>{title}</h1>
+      <p>{uploader}</p>
       <Accordion
         expanded={descriptionExpanded}
         onChange={toggleDescription}
