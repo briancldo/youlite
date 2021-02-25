@@ -14,6 +14,7 @@ import HomePage from './pages/Home';
 import SearchPage from './pages/Search';
 import PlaylistPage from './pages/Playlist';
 import VideoPage from './pages/Video';
+import SettingsPage from './pages/Settings';
 
 function printState() {
   const state = getStore().getState();
@@ -44,6 +45,9 @@ function App() {
                 </PrivateRoute>
                 <PrivateRoute path={routes.video}>
                   <VideoPage />
+                </PrivateRoute>
+                <PrivateRoute path={routes.settings}>
+                  <SettingsPage />
                 </PrivateRoute>
                 <PrivateRoute path={routes.home}>
                   <HomePage />

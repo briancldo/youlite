@@ -11,10 +11,14 @@ import './AppNavigation.css';
 export default function AppNavigation() {
   const location = useLocation();
   const navigateToHome = useRedirect(routes.home);
-  console.log({ location })
-
+  const navigateToSettings = useRedirect(routes.settings);
+  
   function _navigateToHome() {
     if (location.pathname !== routes.home) navigateToHome();
+  }
+
+  function _navigateToSettings() {
+    if (location.pathname !== routes.settings) navigateToSettings();
   }
 
   return (
@@ -25,7 +29,12 @@ export default function AppNavigation() {
         icon={<HomeIcon />}
         onClick={_navigateToHome}
       />
-      <BottomNavigationAction label='Settings' value={routes.settings} icon={<SettingsIcon />} />
+      <BottomNavigationAction
+        label='Settings'
+        value={routes.settings}
+        icon={<SettingsIcon />}
+        onClick={_navigateToSettings}
+      />
     </BottomNavigation>
   )
 }
