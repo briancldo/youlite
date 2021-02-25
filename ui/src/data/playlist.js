@@ -1,5 +1,6 @@
 import { getStore } from './store';
 import { dispatch } from './store/load';
+import { remove } from './persistentStore';
 
 function getPlaylists() {
   return getStore().getState().playlist || {};
@@ -41,8 +42,13 @@ function setVideos(playlistId, videos) {
   });
 }
 
+function clearPlaylistCache() {
+  remove('playlists');
+}
+
 const set = {
   playlistsData: setPlaylistsData,
+  clearPlaylistCache,
   videos: setVideos,
 };
 

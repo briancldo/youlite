@@ -12,6 +12,10 @@ function set(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
 }
 
+function remove(key) {
+  localStorage.removeItem(key);
+}
+
 function restoreData() {
   dispatch({
     type: 'RESTORE_PLAYLISTS',
@@ -23,4 +27,4 @@ function restoreData() {
   });
 }
 
-export { get, set, restoreData };
+export { get, set, remove, restoreData };

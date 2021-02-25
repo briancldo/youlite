@@ -38,7 +38,7 @@ function restorePlaylists(state, action) {
 const handlers = {
   CACHE_PLAYLIST_LIST: cachePlaylistList,
   CACHE_PLAYLIST_VIDEOS: cachePlaylistVideos,
-  RESTORE_PLAYLISTS: restorePlaylists,
+  RESTORE_PLAYLISTS: restorePlaylists
 };
 
 const initialState = {};
