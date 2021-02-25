@@ -5,6 +5,7 @@ const routes = {
   search: '/search',
   playlist: '/playlist',
   video: '/video',
+  settings: '/settings',
   home: '/',
 };
 

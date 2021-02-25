@@ -25,36 +25,36 @@ function App() {
 
   return (
     <div className='app'>
-      <div className='app-content'>
         {
           process.env.NODE_ENV === 'development'
           && <Button onClick={printState}>Print State</Button>
         }
         <Provider store={store}>
           <Router>
-            <Switch>
-              <Route path={routes.login}>
-                <LoginPage />
-              </Route>
-              <PrivateRoute path={routes.search}>
-                <SearchPage />
-              </PrivateRoute>
-              <PrivateRoute path={routes.playlist}>
-                <PlaylistPage />
-              </PrivateRoute>
-              <PrivateRoute path={routes.video}>
-                <VideoPage />
-              </PrivateRoute>
-              <PrivateRoute path={routes.home}>
-                <HomePage />
-              </PrivateRoute>
-            </Switch>
+            <div className='app-content'>
+              <Switch>
+                <Route path={routes.login}>
+                  <LoginPage />
+                </Route>
+                <PrivateRoute path={routes.search}>
+                  <SearchPage />
+                </PrivateRoute>
+                <PrivateRoute path={routes.playlist}>
+                  <PlaylistPage />
+                </PrivateRoute>
+                <PrivateRoute path={routes.video}>
+                  <VideoPage />
+                </PrivateRoute>
+                <PrivateRoute path={routes.home}>
+                  <HomePage />
+                </PrivateRoute>
+              </Switch>
+            </div>
+            <div className='app-navigation'>
+              <AppNavigation />
+            </div>
           </Router>
         </Provider>
-      </div>
-      <div className='app-navigation'>
-        <AppNavigation />
-      </div>
     </div>
   );
 }

@@ -10,6 +10,7 @@
 .app-content {
   height: 90%;
   width: 100%;
+  overflow-y: scroll;
 }
 
 .app-navigation {
