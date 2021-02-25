@@ -8,9 +8,15 @@
   overflow-y: auto;
 }
 
+.video-page-video-section {
+  height: 70%;
+  width: 100%;
+  overflow-y: auto;
+}
+
 .video-description-accordion {
   height: 30%;
   width: 100%;
   overflow-y: auto;
-  background-color: #eeeeee !important;
+  background-color: #dddddd !important;
 }
