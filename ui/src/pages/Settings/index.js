@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 
 import { removeToken } from '../../data/token';
 import { set } from '../../data/playlist';
+import './index.css';
 
 export default function SettingsPage() {
   function clearPlaylistCache() {
@@ -12,10 +13,22 @@ export default function SettingsPage() {
   }
 
   return (
-  <div>
-    <h1>Settings</h1>
-    <Button onClick={removeToken}>Logout</Button>
-    <Button onClick={clearPlaylistCache}>Clear cache</Button>
+  <div className='settings-page-main'>
+    <Button
+      onClick={clearPlaylistCache}
+      variant='contained'
+      color='secondary'
+      className='settings-page-button'
+    >
+      Clear cache
+    </Button>
+    <Button
+      variant='contained'
+      onClick={removeToken}
+      className='settings-page-button'
+    >
+      Logout
+    </Button>
   </div>
   )
 }
