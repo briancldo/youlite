@@ -1,5 +1,4 @@
 import React from 'react';
-import Divider from '@material-ui/core/Divider';
 
 import { useRedirect, routes } from '../../utils/navigation';
 import InteractiveCard from './InteractiveCard';
@@ -16,11 +15,13 @@ export default function VideoItem(props) {
 
   return (
     <>
-      <InteractiveCard className='video-item-wrapper' onClick={navigateToVideoWithState}>
+      <InteractiveCard
+        onClick={navigateToVideoWithState}
+        className='video-item-wrapper'
+      >
         <img src={thumbnailUrl} alt={`Video ${title}`} />
         <h3>{title}</h3>
       </InteractiveCard>
-      <Divider variant='middle' className='video-item-divider' />
     </>
   );
 }
