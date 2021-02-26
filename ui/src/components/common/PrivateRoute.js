@@ -3,21 +3,30 @@ import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { routes } from '../../utils/navigation';
+import AppNavigation from '../AppNavigation';
+import './PrivateRoute.css';
 
 function PrivateRoute({ children, token, ...rest }) {
   return (
-    <Route
-      {...rest}
-      render={({ location }) =>
-        token ? (
-          children
-        ) : (
-          <Redirect
-            to={{ pathname: routes.login, state: { from: location } }}
-          />
-        )
-      }
-    /> 
+    <>
+      <div className='app-content'>
+        <Route
+          {...rest}
+          render={({ location }) =>
+            token ? (
+              children
+            ) : (
+              <Redirect
+                to={{ pathname: routes.login, state: { from: location } }}
+              />
+            )
+          }
+        /> 
+      </div>
+      <div className='app-navigation'>
+        <AppNavigation />
+      </div>
+    </>
   );
 }
 
