@@ -5,3 +5,17 @@
   height: 100%;
   width: 100%;
 }
+
+.homepage-header {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #eeeeee;
+}
+
+.homepage-playlist-list {
+  height: 90%;
+  width: 100%;
+  overflow-y: auto;
+}

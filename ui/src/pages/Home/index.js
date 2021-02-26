@@ -16,8 +16,12 @@ export default function HomePage() {
 
   return (
     <div className='homepage-main'>
-      <h1>Playlists</h1>
-      <PlaylistList {...{playlistsData}} />
+      <div className='homepage-header'>
+        <h1>Playlists</h1>
+      </div>
+      <div className='homepage-playlist-list'>
+        <PlaylistList {...{playlistsData}} />
+      </div>
     </div>
   );
 }
