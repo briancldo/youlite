@@ -1,7 +1,8 @@
 import React from 'react';
-import Card from '@material-ui/core/Card';
+import Divider from '@material-ui/core/Divider';
 
 import { useRedirect, routes } from '../../utils/navigation';
+import InteractiveCard from './InteractiveCard';
 import './VideoItem.css';
 
 export default function VideoItem(props) {
@@ -14,9 +15,12 @@ export default function VideoItem(props) {
   }
 
   return (
-    <Card className='wrapper' onClick={navigateToVideoWithState}>
-      <img src={thumbnailUrl} alt={`Video ${title}`} />
-      <h1>{title}</h1>
-    </Card>
+    <>
+      <InteractiveCard className='video-item-wrapper' onClick={navigateToVideoWithState}>
+        <img src={thumbnailUrl} alt={`Video ${title}`} />
+        <h3>{title}</h3>
+      </InteractiveCard>
+      <Divider variant='middle' className='video-item-divider' />
+    </>
   );
 }

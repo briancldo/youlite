@@ -1,0 +1,22 @@
+.playlist-page-main {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.playlist-page-header {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #eeeeee;
+}
+
+.playlist-page-video-list {
+  height: 90%;
+  width: 100%;
+  overflow-y: auto;
+}
