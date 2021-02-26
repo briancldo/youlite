@@ -1,11 +1,10 @@
 .playlist-list {
-  height: 50%;
+  height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
 .playlist-list-item {
-  height: 100%;
   width: 100%;
 }
