@@ -9,7 +9,7 @@ async function authenticate(provider, providerResponse) {
 
 const providerHandlers = {
   google: async (googleResponse) => {
-    const token = googleResponse.uc.access_token;
+    const token = googleResponse.accessToken;
     setToken(token);
   },
 };
