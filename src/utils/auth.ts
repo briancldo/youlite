@@ -1,6 +1,10 @@
+import { GoogleLoginResponse } from 'react-google-login';
 import { setToken } from '../data/token';
 
-async function authenticate(provider, providerResponse) {
+type LoginProvider = 'google';
+type LoginResponse = GoogleLoginResponse;
+
+async function authenticate(provider: LoginProvider, providerResponse: LoginResponse): Promise<void> {
   const handler = providerHandlers[provider];
   if (!handler) throw new Error('Invalid provider.');
 
@@ -8,7 +12,7 @@ async function authenticate(provider, providerResponse) {
 }
 
 const providerHandlers = {
-  google: async (googleResponse) => {
+  google: async (googleResponse: GoogleLoginResponse) => {
     const token = googleResponse.accessToken;
     setToken(token);
   },
