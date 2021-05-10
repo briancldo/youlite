@@ -29,7 +29,6 @@
     "strictNullChecks": true,
     "strictFunctionTypes": true,
     "alwaysStrict": true,
-    "noImplicitReturns": true,
     "noUncheckedIndexedAccess": true,
     "moduleResolution": "node",
     "types": [],
