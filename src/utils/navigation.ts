@@ -1,4 +1,5 @@
 import { useHistory } from 'react-router-dom';
+import { Query } from './request.types';
 
 const routes = {
   login: '/login',
@@ -8,10 +9,6 @@ const routes = {
   settings: '/settings',
   home: '/',
 };
-
-interface Query {
-  [key: string]: string;
-}
 
 interface Params {
   [key: string]: string;

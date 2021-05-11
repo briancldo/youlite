@@ -1,6 +1,4 @@
-interface Query {
-  [key: string]: string;
-}
+import { Query } from './request.types';
 
 function getQueryString(queryObject: Query) {
   return Object.keys(queryObject).map(key => `${key}=${queryObject[key]}`).join('&');
