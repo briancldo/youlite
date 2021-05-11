@@ -1,7 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 
-function useInitializeState(initializer, initializerArgs, initialState = {}) {
-  const [state, setState] = useState(initialState);
+function useInitializeState(
+  initializer: (...args: typeof initializerArgs) => any,
+  initializerArgs: any[],
+  initialState?: any
+) {
+  const [state, setState] = useState(initialState ?? {});
 
   useEffect(() => {
     const initialize = async () => {
@@ -15,8 +19,12 @@ function useInitializeState(initializer, initializerArgs, initialState = {}) {
   return [state, setState];
 }
 
-function useInitializeRef(initializer, initializerArgs, initialValue = {}) {
-  const ref = useRef(initialValue);
+function useInitializeRef(
+  initializer: (...args: typeof initializerArgs) => any,
+  initializerArgs: any[],
+  initialValue?: any
+) {
+  const ref = useRef(initialValue ?? {});
 
   useEffect(() => {
     const initialize = async () => {
