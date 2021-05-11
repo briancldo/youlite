@@ -5,9 +5,14 @@ function getAccessToken() {
   return `Bearer ${getToken()}`;
 }
 
+type HttpMethod = 'get' | 'post' | 'put' | 'delete';
+interface RequestBody {
+  [key: string]: any;
+}
+
 const noBodyRequestMethods = ['get', 'delete'];
 const withBodyRequestMethods = ['post', 'put'];
-export default async function request(method, url, body = {}) {
+export default async function request(method: HttpMethod, url: string, body: RequestBody = {}) {
   const config = {
     headers: {
       Authorization: getAccessToken(),
