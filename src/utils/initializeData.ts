@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 
-function useInitializeState(
-  initializer: (...args: typeof initializerArgs) => any,
+function useInitializeState<T>(
+  initializer: (...args: typeof initializerArgs) => T,
   initializerArgs: any[],
-  initialState?: any
+  initialState?: T
 ) {
-  const [state, setState] = useState(initialState ?? {});
+  const [state, setState] = useState(initialState);
 
   useEffect(() => {
     const initialize = async () => {
@@ -14,17 +14,18 @@ function useInitializeState(
       setState(data);
     }
     initialize();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return [state, setState];
 }
 
-function useInitializeRef(
-  initializer: (...args: typeof initializerArgs) => any,
+function useInitializeRef<T>(
+  initializer: (...args: typeof initializerArgs) => T,
   initializerArgs: any[],
-  initialValue?: any
+  initialValue?: T
 ) {
-  const ref = useRef(initialValue ?? {});
+  const ref = useRef(initialValue);
 
   useEffect(() => {
     const initialize = async () => {
