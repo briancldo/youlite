@@ -68,3 +68,6 @@ export type AuthReducer = (state: AuthState, action?: AuthAction) => AuthState;
 export interface AuthReducerCollection {
   [actionType: string]: AuthReducer;
 }
+
+
+export type StoreAction = PlaylistAction | AuthAction;

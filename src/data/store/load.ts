@@ -1,6 +1,7 @@
 import { getStore } from './index';
+import { StoreAction } from './store.types';
 
-function dispatch(action) {
+function dispatch(action: StoreAction) {
   const store = getStore();
   store.dispatch(action);
 }
