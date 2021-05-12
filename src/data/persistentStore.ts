@@ -1,30 +1,33 @@
 import { dispatch } from './store/load';
+import { RestorePlaylistsAction, SetTokenAction } from './store/store.types';
 
-function get(key) {
-  try {
-    return JSON.parse(localStorage.getItem(key));
-  } catch {
-    return localStorage.getItem(key);
-  }
+function get(key: string) {
+  const item = localStorage.getItem(key);
+  if (!item) return null;
+  return JSON.parse(item);
 }
 
-function set(key, value) {
+function set(key: string, value: any) {
   localStorage.setItem(key, JSON.stringify(value));
 }
 
-function remove(key) {
+function remove(key: string) {
   localStorage.removeItem(key);
 }
 
+const restorePlaylistsAction: RestorePlaylistsAction = {
+  type: 'RESTORE_PLAYLISTS',
+  playlists: get('playlists'),
+};
+
+const setTokenAction: SetTokenAction = {
+  type: 'SET_TOKEN',
+  token: get('token') || '',
+}
+
 function restoreData() {
-  dispatch({
-    type: 'RESTORE_PLAYLISTS',
-    playlists: get('playlists'),
-  })
-  dispatch({
-    type: 'SET_TOKEN',
-    token: get('token') || '',
-  });
+  dispatch(restorePlaylistsAction)
+  dispatch(setTokenAction);
 }
 
 export { get, set, remove, restoreData };
