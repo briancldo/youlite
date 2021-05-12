@@ -56,3 +56,15 @@ export interface SetTokenAction {
   type: 'SET_TOKEN';
   token: string;
 }
+
+export interface RemoveTokenAction {
+  type: 'REMOVE_TOKEN';
+}
+
+export type AuthAction = SetTokenAction | RemoveTokenAction;
+
+export type AuthReducer = (state: AuthState, action?: AuthAction) => AuthState;
+
+export interface AuthReducerCollection {
+  [actionType: string]: AuthReducer;
+}

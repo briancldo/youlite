@@ -51,7 +51,7 @@ const handlers: PlaylistReducerCollection = {
   RESTORE_PLAYLISTS: restorePlaylists as PlaylistReducer,
 };
 
-const initialState = {};
+const initialState: PlaylistState = {};
 
 export default function reducer(state: PlaylistState = initialState, action: PlaylistAction) {
   const handler = handlers[action.type];
