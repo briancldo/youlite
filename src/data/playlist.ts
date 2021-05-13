@@ -29,7 +29,7 @@ const get = {
   videos: getVideos,
 };
 
-function setPlaylistsData(playlistsData: Playlist) {
+function setPlaylistsData(playlistsData: Playlist[]) {
   dispatch({
     type: 'CACHE_PLAYLIST_LIST',
     playlistsData,
