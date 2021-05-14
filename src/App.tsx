@@ -20,7 +20,7 @@ function printState() {
   console.log({ state });
 }
 
-function App() {
+export default function App() {
   restoreData();
 
   return (
@@ -56,5 +56,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

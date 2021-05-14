@@ -8,7 +8,7 @@ import './PrivateRoute.css';
 import { StoreState } from '../../data/store/store.types';
 
 interface PrivateRoute extends RouteProps {
-  token: string;
+  token?: string;
 }
 
 const PrivateRoute: React.FC<PrivateRoute> = ({ children, token, ...rest }) => {
