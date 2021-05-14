@@ -1,12 +1,17 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Redirect, RouteProps } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { routes } from '../../utils/navigation';
 import AppNavigation from '../AppNavigation';
 import './PrivateRoute.css';
+import { StoreState } from '../../data/store/store.types';
 
-function PrivateRoute({ children, token, ...rest }) {
+interface PrivateRoute extends RouteProps {
+  token: string;
+}
+
+const PrivateRoute: React.FC<PrivateRoute> = ({ children, token, ...rest }) => {
   return (
     <>
       <div className='app-content'>
@@ -30,8 +35,8 @@ function PrivateRoute({ children, token, ...rest }) {
   );
 }
 
-function mapStateToProps(state) {
-  return { token: state.auth.token };
+function mapStateToProps(state: StoreState) {
+  return { token: state?.auth?.token };
 }
 
 export default connect(mapStateToProps, null)(PrivateRoute);
