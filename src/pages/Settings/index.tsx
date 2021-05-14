@@ -5,7 +5,7 @@ import { removeToken } from '../../data/token';
 import { set } from '../../data/playlist';
 import './index.css';
 
-export default function SettingsPage() {
+const SettingsPage: React.FC = () => {
   function clearPlaylistCache() {
     set.clearPlaylistCache();
     window.location.reload();
@@ -32,3 +32,5 @@ export default function SettingsPage() {
   </div>
   )
 }
+
+export default SettingsPage;
