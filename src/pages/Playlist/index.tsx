@@ -6,8 +6,14 @@ import { getVideosByPlaylistId } from '../../utils/youtube.api';
 import { useInitializeState } from '../../utils/initializeData';
 import { get, set } from '../../data/playlist';
 import './index.css';
+import { Video } from '../../utils/youtube.api.types';
 
-function PlaylistUI(props) {
+interface PlaylistUIProps {
+  playlistTitle: string;
+  videos: Video[];
+}
+
+const PlaylistUI: React.FC<PlaylistUIProps> = (props) => {
   const { playlistTitle, videos } = props;
 
   return (
@@ -22,13 +28,20 @@ function PlaylistUI(props) {
   );
 }
 
-export default function PlaylistPage(props) {
-  const { playlistTitle, playlistId } = useLocation().state;
+interface PlaylistPageLocationState {
+  playlistTitle: string;
+  playlistId: string;
+}
+
+const PlaylistPage: React.FC = () => {
+  const { playlistTitle, playlistId } = useLocation<PlaylistPageLocationState>().state;
   const videosCached = get.videos(playlistId).length > 0;
   const getVideos = videosCached ? get.videos : getVideosByPlaylistId;
   const [videos] = useInitializeState(getVideos, [playlistId], []);
   
-  if (!videosCached && videos.length > 1) set.videos(playlistId, videos);
+  if (!videosCached && videos && videos.length > 1) set.videos(playlistId, videos);
 
   return <PlaylistUI {...{playlistTitle, videos}} />
 }
+
+export default PlaylistPage;

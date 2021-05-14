@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 function useInitializeState<T>(
   initializer: (...args: typeof initializerArgs) => T | Promise<T>,
   initializerArgs: any[],
-  initialState?: T
+  initialState: T
 ) {
   const stateObj = useState(initialState);
 
@@ -23,7 +23,7 @@ function useInitializeState<T>(
 function useInitializeRef<T>(
   initializer: (...args: typeof initializerArgs) => T | Promise<T>,
   initializerArgs: any[],
-  initialValue?: T
+  initialValue: T
 ) {
   const ref = useRef(initialValue);
 
