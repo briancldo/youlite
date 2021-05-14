@@ -1,21 +1,30 @@
 import { useEffect, useRef, useState } from 'react';
 
-function useInitializeState(initializer, initializerArgs, initialState = {}) {
-  const [state, setState] = useState(initialState);
+function useInitializeState<T>(
+  initializer: (...args: typeof initializerArgs) => T | Promise<T>,
+  initializerArgs: any[],
+  initialState?: T
+) {
+  const stateObj = useState(initialState);
 
   useEffect(() => {
     const initialize = async () => {
       const args = initializerArgs || [];
       const data = await initializer(...args);
-      setState(data);
+      stateObj[1](data);
     }
     initialize();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return [state, setState];
+  return stateObj;
 }
 
-function useInitializeRef(initializer, initializerArgs, initialValue = {}) {
+function useInitializeRef<T>(
+  initializer: (...args: typeof initializerArgs) => T | Promise<T>,
+  initializerArgs: any[],
+  initialValue?: T
+) {
   const ref = useRef(initialValue);
 
   useEffect(() => {

@@ -1,4 +1,5 @@
 import { useHistory } from 'react-router-dom';
+import { Query } from './request.types';
 
 const routes = {
   login: '/login',
@@ -9,13 +10,19 @@ const routes = {
   home: '/',
 };
 
-function slashify(route) {
+interface Params {
+  [key: string]: string;
+}
+
+type NavigationType = 'push' | 'replace';
+
+function slashify(route: string) {
   if (!route) return '/';
   if (route === '' || route[0] !== '/') return `/${route}`;
   return route;
 }
 
-function getQueryString(query) {
+function getQueryString(query: Query) {
   const queryParts = [];
 
   for (const key in query) {
@@ -25,9 +32,9 @@ function getQueryString(query) {
   return queryParts.join('&');
 }
 
-function applyParameters(route, params, query) {
+function applyParameters(route: string, params: Params, query: Query) {
   const routeParts = route.split('/');
-  const parameterized = [];
+  const parameterized: string[] = [];
 
   for (const routePart of routeParts) {
     const replacement =
@@ -44,30 +51,30 @@ function applyParameters(route, params, query) {
   return parameterized.join('/').concat(`?${queryString}`);
 }
 
-function useNavigate(page, navigationType) {
+function useNavigate(page: string, navigationType: NavigationType) {
   const route = slashify(page);
   const history = useHistory();
   return (params = {}, query = {}, state = {}) =>
     history[navigationType](applyParameters(route, params, query), state);
 }
 
-function useRedirect(page) {
+function useRedirect(page: string) {
   return useNavigate(page, 'push');
 }
 
-function useReplace(page) {
+function useReplace(page: string) {
   return useNavigate(page, 'replace');
 }
 
-function getQueryObject(queryString) {
+function getQueryObject(queryString: string) {
   if (!queryString) return {};
 
   const _queryString = queryString.slice(1);
   const queryParts = _queryString.split('&');
-  const queryObject = {};
+  const queryObject: Query = {};
   queryParts.forEach(part => {
     const [key, value] = part.split('=');
-    queryObject[key] = value;
+    if (key && value) queryObject[key] = value;
   });
 
   return queryObject;

@@ -1,11 +1,21 @@
 import { set } from '../persistentStore';
+import {
+  PlaylistState,
+  CachePlaylistListAction,
+  CachePlaylistVideosAction,
+  RestorePlaylistsAction,
+  PlaylistAction,
+  PlaylistReducerCollection,
+  PlaylistReducer,
+} from './store.types';
 
-function cachePlaylistList(state, action) {
+function cachePlaylistList(state: PlaylistState, action: CachePlaylistListAction) {
   const { playlistsData } = action;
-  const playlistsDataMap = {};
+  const playlistsDataMap: PlaylistState = {};
   playlistsData.forEach(playlist => {
     playlistsDataMap[playlist.id] = {
       metadata: playlist,
+      videos: [],
     };
   });
 
@@ -17,7 +27,7 @@ function cachePlaylistList(state, action) {
   return newState;
 }
 
-function cachePlaylistVideos(state, action) {
+function cachePlaylistVideos(state: PlaylistState, action: CachePlaylistVideosAction) {
   const { playlistId, videos } = action;
 
   const newState = {
@@ -31,19 +41,19 @@ function cachePlaylistVideos(state, action) {
   return newState;
 }
 
-function restorePlaylists(state, action) {
+function restorePlaylists(state: PlaylistState, action: RestorePlaylistsAction) {
   return action.playlists;
 }
 
-const handlers = {
-  CACHE_PLAYLIST_LIST: cachePlaylistList,
-  CACHE_PLAYLIST_VIDEOS: cachePlaylistVideos,
-  RESTORE_PLAYLISTS: restorePlaylists
+const handlers: PlaylistReducerCollection = {
+  CACHE_PLAYLIST_LIST: cachePlaylistList as PlaylistReducer,
+  CACHE_PLAYLIST_VIDEOS: cachePlaylistVideos as PlaylistReducer,
+  RESTORE_PLAYLISTS: restorePlaylists as PlaylistReducer,
 };
 
-const initialState = {};
+const initialState: PlaylistState = {};
 
-export default function reducer(state = initialState, action) {
+export default function reducer(state: PlaylistState = initialState, action: PlaylistAction) {
   const handler = handlers[action.type];
   if (!handler) return state;
   return handler(state, action);

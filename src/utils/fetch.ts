@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
+import { RequestMethod } from './request.types';
 import config from 'env';
 
-function useFetch(method, url, body = {}, defaultValue) {
+function useFetch(method: RequestMethod, url: string, body = {}, defaultValue: any) {
   const _url = url[0] === '/' ? `${config.get('domain')}${url}}`: url;
   const [data, setData] = useState(defaultValue);
 
@@ -13,7 +14,7 @@ function useFetch(method, url, body = {}, defaultValue) {
       setData(response.data);
     }
     fetch();
-  }, [body, method,_url]);
+  }, [body, method, _url]);
 
   return data;
 }
