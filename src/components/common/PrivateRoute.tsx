@@ -7,11 +7,11 @@ import AppNavigation from '../AppNavigation';
 import './PrivateRoute.css';
 import { StoreState } from '../../data/store/store.types';
 
-interface PrivateRoute extends RouteProps {
+interface PrivateRouteProps extends RouteProps {
   token?: string;
 }
 
-const PrivateRoute: React.FC<PrivateRoute> = ({ children, token, ...rest }) => {
+const PrivateRoute: React.FC<PrivateRouteProps> = ({ children, token, ...rest }) => {
   return (
     <>
       <div className='app-content'>
