@@ -8,8 +8,9 @@
 # testing
 /coverage
 
-# production
+# build
 /build
+tsconfig.tsbuildinfo
 
 # misc
 .DS_Store
