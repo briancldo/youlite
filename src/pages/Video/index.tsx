@@ -7,8 +7,9 @@ import ExpandIcon from '@material-ui/icons/ExpandMoreRounded';
 
 import { getQueryObject } from '../../utils/navigation';
 import './index.css';
+import { Video } from '../../utils/youtube.api.types';
 
-function VideoUI(props) {
+const VideoUI: React.FC<Video> = (props) => {
   const { id, title, description, uploader } = props;
   const [descriptionExpanded, setDescriptionExpanded] = useState(false);
 
@@ -25,7 +26,7 @@ function VideoUI(props) {
         title={title}
         frameBorder='0'
         allow='accelerometer;autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-        allowFullScreen="allowFullScreen">
+        allowFullScreen={true}>
       </iframe>
       <h1>{title}</h1>
       <p>{uploader}</p>
@@ -45,10 +46,12 @@ function VideoUI(props) {
   )
 }
 
-export default function VideoPage(props) {
-  const video = useLocation().state;
+const VideoPage: React.FC = () => {
+  const video = useLocation<Video>().state;
   const queryString = useLocation().search;
-  const id = getQueryObject(queryString).id;
+  const id = getQueryObject(queryString).id as string;
 
   return <VideoUI {...{ ...video, id }} />
 }
+
+export default VideoPage;
