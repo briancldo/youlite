@@ -15,12 +15,12 @@ export interface VideoData {
 }
 
 interface ChanenelSearchResult {
-  id: { kind: "youtube#channel" };
+  id: { kind: 'youtube#channel' };
   snippet: ChannelData;
 }
 
 interface VideoSearchResult {
-  id: { kind: "youtube#video" };
+  id: { kind: 'youtube#video' };
   snippet: VideoData;
 }
 

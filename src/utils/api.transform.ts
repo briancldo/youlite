@@ -5,9 +5,9 @@ import {
   Playlist,
   PlaylistResults,
   PlaylistVideosResults,
-} from "./api.transform.types";
+} from './api.transform.types';
 
-const playlistFilterKeyword = "lite";
+const playlistFilterKeyword = 'lite';
 
 function transformChannelData(channelData: ChannelData) {
   return {
@@ -30,16 +30,16 @@ function transformVideoData(videoData: VideoData) {
 }
 
 function transformSearchResult(result: SearchResult) {
-  if (result.id.kind === "youtube#channel") {
+  if (result.id.kind === 'youtube#channel') {
     return {
-      type: "channel",
+      type: 'channel',
       data: transformChannelData(result.snippet as ChannelData),
     };
   }
 
-  if (result.id.kind === "youtube#video") {
+  if (result.id.kind === 'youtube#video') {
     return {
-      type: "video",
+      type: 'video',
       data: transformVideoData(result.snippet as VideoData),
     };
   }

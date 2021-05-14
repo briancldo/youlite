@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from 'react';
 
 function useInitializeState<T>(
   initializer: (...args: typeof initializerArgs) => T | Promise<T>,

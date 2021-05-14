@@ -1,4 +1,4 @@
-import { set } from "../persistentStore";
+import { set } from '../persistentStore';
 import {
   PlaylistState,
   CachePlaylistListAction,
@@ -7,7 +7,7 @@ import {
   PlaylistAction,
   PlaylistReducerCollection,
   PlaylistReducer,
-} from "./store.types";
+} from './store.types';
 
 function cachePlaylistList(
   state: PlaylistState,
@@ -26,7 +26,7 @@ function cachePlaylistList(
     ...state,
     ...playlistsDataMap,
   };
-  set("playlists", newState);
+  set('playlists', newState);
   return newState;
 }
 
@@ -43,7 +43,7 @@ function cachePlaylistVideos(
       videos,
     },
   };
-  set("playlists", newState);
+  set('playlists', newState);
   return newState;
 }
 

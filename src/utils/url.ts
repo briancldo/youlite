@@ -1,9 +1,9 @@
-import { Query } from "./request.types";
+import { Query } from './request.types';
 
 function getQueryString(queryObject: Query) {
   return Object.keys(queryObject)
     .map((key) => `${key}=${queryObject[key]}`)
-    .join("&");
+    .join('&');
 }
 
 function createCompleteUrl(baseUrl: string, query: Query) {

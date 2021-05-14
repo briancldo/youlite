@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
-import { RequestMethod } from "./request.types";
-import config from "../env/config";
+import { RequestMethod } from './request.types';
+import config from '../env/config';
 
 function useFetch(
   method: RequestMethod,
@@ -10,7 +10,7 @@ function useFetch(
   body?: Record<string, any>,
   defaultValue?: any
 ) {
-  const _url = url[0] === "/" ? `${config.get("domain")}${url}` : url;
+  const _url = url[0] === '/' ? `${config.get('domain')}${url}` : url;
   const [data, setData] = useState(defaultValue);
 
   useEffect(() => {

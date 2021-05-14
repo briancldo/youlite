@@ -1,12 +1,12 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
-import BottomNavigation from "@material-ui/core/BottomNavigation";
-import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
-import HomeIcon from "@material-ui/icons/HomeRounded";
-import SettingsIcon from "@material-ui/icons/SettingsRounded";
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+import BottomNavigation from '@material-ui/core/BottomNavigation';
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+import HomeIcon from '@material-ui/icons/HomeRounded';
+import SettingsIcon from '@material-ui/icons/SettingsRounded';
 
-import { routes, useRedirect } from "../utils/navigation";
-import "./AppNavigation.css";
+import { routes, useRedirect } from '../utils/navigation';
+import './AppNavigation.css';
 
 const AppNavigation: React.FC = () => {
   const location = useLocation();
@@ -25,16 +25,16 @@ const AppNavigation: React.FC = () => {
     <BottomNavigation
       value={location.pathname}
       showLabels
-      className="app-bottom-navigation"
+      className='app-bottom-navigation'
     >
       <BottomNavigationAction
-        label="Home"
+        label='Home'
         value={routes.home}
         icon={<HomeIcon />}
         onClick={_navigateToHome}
       />
       <BottomNavigationAction
-        label="Settings"
+        label='Settings'
         value={routes.settings}
         icon={<SettingsIcon />}
         onClick={_navigateToSettings}

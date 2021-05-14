@@ -1,5 +1,5 @@
-import { Playlist } from "../../utils/api.transform.types";
-import { Video } from "../../utils/youtube.api.types";
+import { Playlist } from '../../utils/api.transform.types';
+import { Video } from '../../utils/youtube.api.types';
 
 // state
 
@@ -22,18 +22,18 @@ export interface StoreState {
 // playlist reducer
 
 export interface CachePlaylistListAction {
-  type: "CACHE_PLAYLIST_LIST";
+  type: 'CACHE_PLAYLIST_LIST';
   playlistsData: Playlist[];
 }
 
 export interface CachePlaylistVideosAction {
-  type: "CACHE_PLAYLIST_VIDEOS";
+  type: 'CACHE_PLAYLIST_VIDEOS';
   playlistId: string;
   videos: Video[];
 }
 
 export interface RestorePlaylistsAction {
-  type: "RESTORE_PLAYLISTS";
+  type: 'RESTORE_PLAYLISTS';
   playlists: PlaylistState;
 }
 
@@ -54,12 +54,12 @@ export interface PlaylistReducerCollection {
 // auth reducer
 
 export interface SetTokenAction {
-  type: "SET_TOKEN";
+  type: 'SET_TOKEN';
   token: string;
 }
 
 export interface RemoveTokenAction {
-  type: "REMOVE_TOKEN";
+  type: 'REMOVE_TOKEN';
 }
 
 export type AuthAction = SetTokenAction | RemoveTokenAction;

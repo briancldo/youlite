@@ -4,7 +4,7 @@ import {
   AuthReducerCollection,
   AuthState,
   SetTokenAction,
-} from "./store.types";
+} from './store.types';
 
 function setToken(state: AuthState, action: SetTokenAction) {
   return {
