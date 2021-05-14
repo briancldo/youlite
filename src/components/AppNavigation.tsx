@@ -8,7 +8,7 @@ import SettingsIcon from '@material-ui/icons/SettingsRounded'
 import { routes, useRedirect } from '../utils/navigation';
 import './AppNavigation.css';
 
-export default function AppNavigation() {
+const AppNavigation: React.FC = () => {
   const location = useLocation();
   const navigateToHome = useRedirect(routes.home);
   const navigateToSettings = useRedirect(routes.settings);
@@ -36,5 +36,7 @@ export default function AppNavigation() {
         onClick={_navigateToSettings}
       />
     </BottomNavigation>
-  )
-}
+  );
+};
+
+export default AppNavigation;
