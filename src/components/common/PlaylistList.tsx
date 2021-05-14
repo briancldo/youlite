@@ -3,8 +3,13 @@ import Grid from '@material-ui/core/Grid';
 
 import PlaylistItem from './PlaylistItem';
 import './PlaylistList.css';
+import { Playlist } from '../../utils/api.transform.types';
 
-export default function PlaylistList(props) {
+interface PlaylistListProps {
+  playlistsData: Playlist[];
+}
+
+const PlaylistList: React.FC<PlaylistListProps> = (props) => {
   const { playlistsData } = props;
 
   return ( 
@@ -16,4 +21,6 @@ export default function PlaylistList(props) {
       ))}
     </Grid>
   )
-}
+};
+
+export default PlaylistList;
