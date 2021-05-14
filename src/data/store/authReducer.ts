@@ -3,7 +3,7 @@ import {
   AuthReducer,
   AuthReducerCollection,
   AuthState,
-  SetTokenAction
+  SetTokenAction,
 } from "./store.types";
 
 function setToken(state: AuthState, action: SetTokenAction) {
@@ -17,7 +17,7 @@ function removeToken(state: AuthState) {
   return {
     ...state,
     token: undefined,
-  }
+  };
 }
 
 const handlers: AuthReducerCollection = {
@@ -27,9 +27,11 @@ const handlers: AuthReducerCollection = {
 
 const initialState: AuthState = {};
 
-export default function reducer(state: AuthState = initialState, action: AuthAction) {
+export default function reducer(
+  state: AuthState = initialState,
+  action: AuthAction
+) {
   const handler = handlers[action.type];
   if (!handler) return state;
   return handler(state, action);
 }
-

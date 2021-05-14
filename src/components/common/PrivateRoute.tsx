@@ -1,20 +1,24 @@
-import React from 'react';
-import { Route, Redirect, RouteProps } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React from "react";
+import { Route, Redirect, RouteProps } from "react-router-dom";
+import { connect } from "react-redux";
 
-import { routes } from '../../utils/navigation';
-import AppNavigation from '../AppNavigation';
-import './PrivateRoute.css';
-import { StoreState } from '../../data/store/store.types';
+import { routes } from "../../utils/navigation";
+import AppNavigation from "../AppNavigation";
+import "./PrivateRoute.css";
+import { StoreState } from "../../data/store/store.types";
 
 interface PrivateRouteProps extends RouteProps {
   token?: string;
 }
 
-const PrivateRoute: React.FC<PrivateRouteProps> = ({ children, token, ...rest }) => {
+const PrivateRoute: React.FC<PrivateRouteProps> = ({
+  children,
+  token,
+  ...rest
+}) => {
   return (
     <>
-      <div className='app-content'>
+      <div className="app-content">
         <Route
           {...rest}
           render={({ location }) =>
@@ -26,14 +30,14 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ children, token, ...rest })
               />
             )
           }
-        /> 
+        />
       </div>
-      <div className='app-navigation'>
+      <div className="app-navigation">
         <AppNavigation />
       </div>
     </>
   );
-}
+};
 
 function mapStateToProps(state: StoreState) {
   return { token: state?.auth?.token };

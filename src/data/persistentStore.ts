@@ -1,5 +1,5 @@
-import { dispatch } from './store/load';
-import { RestorePlaylistsAction, SetTokenAction } from './store/store.types';
+import { dispatch } from "./store/load";
+import { RestorePlaylistsAction, SetTokenAction } from "./store/store.types";
 
 function get(key: string) {
   const item = localStorage.getItem(key);
@@ -16,17 +16,17 @@ function remove(key: string) {
 }
 
 const restorePlaylistsAction: RestorePlaylistsAction = {
-  type: 'RESTORE_PLAYLISTS',
-  playlists: get('playlists'),
+  type: "RESTORE_PLAYLISTS",
+  playlists: get("playlists"),
 };
 
 const setTokenAction: SetTokenAction = {
-  type: 'SET_TOKEN',
-  token: get('token') || '',
-}
+  type: "SET_TOKEN",
+  token: get("token") || "",
+};
 
 function restoreData() {
-  dispatch(restorePlaylistsAction)
+  dispatch(restorePlaylistsAction);
   dispatch(setTokenAction);
 }
 

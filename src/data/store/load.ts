@@ -1,5 +1,5 @@
-import { getStore } from './index';
-import { StoreAction } from './store.types';
+import { getStore } from "./index";
+import { StoreAction } from "./store.types";
 
 function dispatch(action: StoreAction) {
   const store = getStore();

@@ -1,24 +1,24 @@
-import { useHistory } from 'react-router-dom';
-import { Query } from './request.types';
+import { useHistory } from "react-router-dom";
+import { Query } from "./request.types";
 
 const routes = {
-  login: '/login',
-  search: '/search',
-  playlist: '/playlist',
-  video: '/video',
-  settings: '/settings',
-  home: '/',
+  login: "/login",
+  search: "/search",
+  playlist: "/playlist",
+  video: "/video",
+  settings: "/settings",
+  home: "/",
 };
 
 interface Params {
   [key: string]: string;
 }
 
-type NavigationType = 'push' | 'replace';
+type NavigationType = "push" | "replace";
 
 function slashify(route: string) {
-  if (!route) return '/';
-  if (route === '' || route[0] !== '/') return `/${route}`;
+  if (!route) return "/";
+  if (route === "" || route[0] !== "/") return `/${route}`;
   return route;
 }
 
@@ -29,16 +29,16 @@ function getQueryString(query: Query) {
     queryParts.push(`${key}=${query[key]}`);
   }
 
-  return queryParts.join('&');
+  return queryParts.join("&");
 }
 
 function applyParameters(route: string, params: Params, query: Query) {
-  const routeParts = route.split('/');
+  const routeParts = route.split("/");
   const parameterized: string[] = [];
 
   for (const routePart of routeParts) {
     const replacement =
-      routePart[0] !== ':' ? routePart : params[routePart.slice(1)];
+      routePart[0] !== ":" ? routePart : params[routePart.slice(1)];
 
     if (replacement === undefined)
       throw new Error(
@@ -48,7 +48,7 @@ function applyParameters(route: string, params: Params, query: Query) {
   }
 
   const queryString = getQueryString(query);
-  return parameterized.join('/').concat(`?${queryString}`);
+  return parameterized.join("/").concat(`?${queryString}`);
 }
 
 function useNavigate(page: string, navigationType: NavigationType) {
@@ -59,23 +59,23 @@ function useNavigate(page: string, navigationType: NavigationType) {
 }
 
 function useRedirect(page: string) {
-  return useNavigate(page, 'push');
+  return useNavigate(page, "push");
 }
 
 function useReplace(page: string) {
-  return useNavigate(page, 'replace');
+  return useNavigate(page, "replace");
 }
 
 function getQueryObject(queryString: string) {
   if (!queryString) return {};
 
   const _queryString = queryString.slice(1);
-  const queryParts = _queryString.split('&');
+  const queryParts = _queryString.split("&");
   const queryObject: Query = {};
-  queryParts.forEach(part => {
-    const [key, value] = part.split('=');
+  for (const part of queryParts) {
+    const [key, value] = part.split("=");
     if (key && value) queryObject[key] = value;
-  });
+  }
 
   return queryObject;
 }
