@@ -4,7 +4,7 @@ import {
   SearchResult,
   Playlist,
   PlaylistResults,
-  PlaylistVideosResults
+  PlaylistVideosResults,
 } from './api.transform.types';
 
 const playlistFilterKeyword = 'lite';
@@ -25,7 +25,7 @@ function transformVideoData(videoData: VideoData) {
     description: videoData.description,
     thumbnail: {
       url: videoData.thumbnails.medium.url,
-    }
+    },
   };
 }
 
@@ -46,30 +46,31 @@ function transformSearchResult(result: SearchResult) {
 }
 
 function transformSearchResults(results: SearchResult[]) {
-  return results.map(result => transformSearchResult(result));
+  return results.map((result) => transformSearchResult(result));
 }
 
 function filterPlaylists(playlists: Playlist[]) {
-  return playlists.filter(playlist =>
-    playlist.description && playlist.description.includes(playlistFilterKeyword)
+  return playlists.filter(
+    (playlist) =>
+      playlist.description &&
+      playlist.description.includes(playlistFilterKeyword)
   );
 }
 
 function transformPlaylistResults(results: PlaylistResults) {
   const playlistData = results.items;
-  const slimPlaylistData = 
-    playlistData.map(playlist => ({
-      id: playlist.id,
-      title: playlist.snippet.title,
-      description: playlist.snippet.description,
-      thumbnailUrl: playlist.snippet.thumbnails.medium.url,
-    }));
+  const slimPlaylistData = playlistData.map((playlist) => ({
+    id: playlist.id,
+    title: playlist.snippet.title,
+    description: playlist.snippet.description,
+    thumbnailUrl: playlist.snippet.thumbnails.medium.url,
+  }));
   return filterPlaylists(slimPlaylistData) || [];
 }
 
 function transformPlaylistVideosResults(results: PlaylistVideosResults) {
   const videoListData = results.items;
-  return videoListData.map(video => ({
+  return videoListData.map((video) => ({
     id: video.snippet.resourceId.videoId,
     title: video.snippet.title,
     thumbnailUrl: video.snippet.thumbnails.medium.url,

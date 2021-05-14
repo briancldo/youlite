@@ -8,8 +8,10 @@
 # testing
 /coverage
 
-# production
+# build
 /build
+tsconfig.tsbuildinfo
+.netlify/state.json
 
 # misc
 .DS_Store

@@ -14,9 +14,14 @@
   overflow-y: auto;
 }
 
+.description-toggle {
+  width: 100%;
+}
+
 .video-description-accordion {
   flex-grow: 1;
   width: 100%;
   overflow-y: auto;
   background-color: #dddddd !important;
+  white-space: pre;
 }

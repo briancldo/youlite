@@ -10,9 +10,13 @@ interface RequestBody {
   [key: string]: any;
 }
 
-const noBodyRequestMethods = ['get', 'delete'];
-const withBodyRequestMethods = ['post', 'put'];
-export default async function request(method: RequestMethod, url: string, body: RequestBody = {}) {
+const noBodyRequestMethods = new Set(['get', 'delete']);
+const withBodyRequestMethods = new Set(['post', 'put']);
+export default async function request(
+  method: RequestMethod,
+  url: string,
+  body: RequestBody = {}
+) {
   const config = {
     headers: {
       Authorization: getAccessToken(),
@@ -20,10 +24,10 @@ export default async function request(method: RequestMethod, url: string, body: 
   };
 
   try {
-    if (noBodyRequestMethods.includes(method)) {
+    if (noBodyRequestMethods.has(method)) {
       return await axios[method](url, config);
     }
-    if (withBodyRequestMethods.includes(method)) {
+    if (withBodyRequestMethods.has(method)) {
       return await axios[method](url, body, config);
     }
   } catch (error) {

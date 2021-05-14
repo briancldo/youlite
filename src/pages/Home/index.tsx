@@ -9,10 +9,13 @@ import PlaylistList from '../../components/common/PlaylistList';
 
 const HomePage: React.FC = () => {
   const playlistsCached = Object.keys(get.playlists()).length > 0;
-  const getPlaylists = playlistsCached ? get.playlistsDataList : getPlaylistsData;
+  const getPlaylists = playlistsCached
+    ? get.playlistsDataList
+    : getPlaylistsData;
   const [playlistsData] = useInitializeState(getPlaylists, [], []);
 
-  if (!playlistsCached && playlistsData && playlistsData.length > 0) set.playlistsData(playlistsData);
+  if (!playlistsCached && playlistsData && playlistsData.length > 0)
+    set.playlistsData(playlistsData);
 
   return (
     <div className='homepage-main'>
@@ -20,7 +23,7 @@ const HomePage: React.FC = () => {
         <h1>Playlists</h1>
       </div>
       <div className='homepage-playlist-list'>
-        <PlaylistList {...{playlistsData}} />
+        <PlaylistList {...{ playlistsData }} />
       </div>
     </div>
   );

@@ -1,11 +1,10 @@
 const environment = process.env.NODE_ENV;
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const config = require(`./${environment}.json`);
-const lodashGet = require('lodash/get');
+import lodashGet from 'lodash/get';
 
 function get(field: string) {
-  const value = lodashGet(config, field) || lodashGet(process.env, field);
-
-  return value;
+  return lodashGet(config, field) || lodashGet(process.env, field);
 }
 
 const exports = { get };

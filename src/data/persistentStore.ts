@@ -2,9 +2,14 @@ import { dispatch } from './store/load';
 import { RestorePlaylistsAction, SetTokenAction } from './store/store.types';
 
 function get(key: string) {
-  const item = localStorage.getItem(key);
-  if (!item) return null;
-  return JSON.parse(item);
+  let item;
+  try {
+    item = localStorage.getItem(key);
+    if (!item) return null;
+    return JSON.parse(item);
+  } catch {
+    return item;
+  }
 }
 
 function set(key: string, value: any) {
@@ -23,10 +28,10 @@ const restorePlaylistsAction: RestorePlaylistsAction = {
 const setTokenAction: SetTokenAction = {
   type: 'SET_TOKEN',
   token: get('token') || '',
-}
+};
 
 function restoreData() {
-  dispatch(restorePlaylistsAction)
+  dispatch(restorePlaylistsAction);
   dispatch(setTokenAction);
 }
 

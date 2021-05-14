@@ -11,19 +11,15 @@ function setToken(token: string) {
   const setTokenAction: SetTokenAction = {
     type: 'SET_TOKEN',
     token,
-  }
+  };
   dispatch(setTokenAction);
 }
 
-const removeTokenAction: RemoveTokenAction = { type: 'REMOVE_TOKEN'}
+const removeTokenAction: RemoveTokenAction = { type: 'REMOVE_TOKEN' };
 
 function removeToken() {
   localStorage.removeItem('token');
   dispatch(removeTokenAction);
 }
 
-export {
-  getToken,
-  setToken,
-  removeToken,
-};
+export { getToken, setToken, removeToken };

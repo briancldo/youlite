@@ -1,7 +1,7 @@
 export interface ChannelData {
   channelTitle: string;
   thumbnails: {
-    medium: { url: string }
+    medium: { url: string };
   };
 }
 
@@ -10,7 +10,7 @@ export interface VideoData {
   title: string;
   description: string;
   thumbnails: {
-    medium: { url: string }
+    medium: { url: string };
   };
 }
 
@@ -36,9 +36,9 @@ export interface Playlist {
 interface PlaylistResult {
   id: string;
   snippet: {
-    title: string,
-    description: string,
-    thumbnails: { medium: { url: string } },
+    title: string;
+    description: string;
+    thumbnails: { medium: { url: string } };
   };
 }
 
@@ -48,9 +48,9 @@ export interface PlaylistResults {
 
 interface PlaylistVideosResult {
   snippet: {
-    resourceId: { videoId: string },
-    title: string,
-    thumbnails: { medium: { url: string } },
+    resourceId: { videoId: string };
+    title: string;
+    thumbnails: { medium: { url: string } };
     videoOwnerChannelTitle: string;
     description: string;
   };

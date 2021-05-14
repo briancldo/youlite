@@ -12,7 +12,7 @@ const baseUrls = {
   playlistsItems: {
     list: 'https://www.googleapis.com/youtube/v3/playlistItems',
   },
-}
+};
 
 async function getPlaylistsData() {
   const query: Query = {
@@ -38,13 +38,16 @@ async function getVideosByPlaylistId(id: string): Promise<Video[]> {
   return transformService.transformPlaylistVideosResults(response.data);
 }
 
-async function getVideosFromPlaylists(playlists: Playlist[]): Promise<PlaylistData[]> {
-  const playlistVideosPromises = playlists.map(async playlist => ({
+async function getVideosFromPlaylists(
+  playlists: Playlist[]
+): Promise<PlaylistData[]> {
+  const playlistVideosPromises = playlists.map(async (playlist) => ({
     videos: await getVideosByPlaylistId(playlist.id),
     title: playlist.title,
     description: playlist.description,
     thumbnailUrl: playlist.thumbnailUrl,
   }));
+  // eslint-disable-next-line compat/compat
   return Promise.all(playlistVideosPromises);
 }
 

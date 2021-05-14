@@ -1,10 +1,15 @@
 import React from 'react';
 
 import { useRedirect, routes } from '../../utils/navigation';
+import { Video } from '../../utils/youtube.api.types';
 import InteractiveCard from './InteractiveCard';
 import './VideoItem.css';
 
-export default function VideoItem(props) {
+interface VideoItemProps {
+  video: Video;
+}
+
+const VideoItem: React.FC<VideoItemProps> = (props) => {
   const { video } = props;
   const { id, title, thumbnailUrl, description, uploader } = video;
   const navigateToVideo = useRedirect(routes.video);
@@ -24,4 +29,6 @@ export default function VideoItem(props) {
       </InteractiveCard>
     </>
   );
-}
+};
+
+export default VideoItem;

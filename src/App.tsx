@@ -20,41 +20,38 @@ function printState() {
   console.log({ state });
 }
 
-function App() {
+export default function App() {
   restoreData();
 
   return (
     <div className='app'>
-        {
-          process.env.NODE_ENV === 'development'
-          && <Button onClick={printState}>Print State</Button>
-        }
-        <Provider store={store}>
-          <Router>
-            <Switch>
-              <Route path={routes.login}>
-                <LoginPage />
-              </Route>
-              <PrivateRoute path={routes.search}>
-                <SearchPage />
-              </PrivateRoute>
-              <PrivateRoute path={routes.playlist}>
-                <PlaylistPage />
-              </PrivateRoute>
-              <PrivateRoute path={routes.video}>
-                <VideoPage />
-              </PrivateRoute>
-              <PrivateRoute path={routes.settings}>
-                <SettingsPage />
-              </PrivateRoute>
-              <PrivateRoute path={routes.home}>
-                <HomePage />
-              </PrivateRoute>
-            </Switch>
-          </Router>
-        </Provider>
+      {process.env.NODE_ENV === 'development' && (
+        <Button onClick={printState}>Print State</Button>
+      )}
+      <Provider store={store}>
+        <Router>
+          <Switch>
+            <Route path={routes.login}>
+              <LoginPage />
+            </Route>
+            <PrivateRoute path={routes.search}>
+              <SearchPage />
+            </PrivateRoute>
+            <PrivateRoute path={routes.playlist}>
+              <PlaylistPage />
+            </PrivateRoute>
+            <PrivateRoute path={routes.video}>
+              <VideoPage />
+            </PrivateRoute>
+            <PrivateRoute path={routes.settings}>
+              <SettingsPage />
+            </PrivateRoute>
+            <PrivateRoute path={routes.home}>
+              <HomePage />
+            </PrivateRoute>
+          </Switch>
+        </Router>
+      </Provider>
     </div>
   );
 }
-
-export default App;

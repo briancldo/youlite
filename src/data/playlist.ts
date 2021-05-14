@@ -9,7 +9,7 @@ function getPlaylists() {
 }
 
 function getPlaylistsDataList() {
-  return Object.values(getPlaylists()).map(playlist => playlist.metadata);
+  return Object.values(getPlaylists()).map((playlist) => playlist.metadata);
 }
 
 function getPlaylist(id: string) {

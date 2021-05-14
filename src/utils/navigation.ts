@@ -48,6 +48,7 @@ function applyParameters(route: string, params: Params, query: Query) {
   }
 
   const queryString = getQueryString(query);
+  // eslint-disable-next-line unicorn/prefer-spread
   return parameterized.join('/').concat(`?${queryString}`);
 }
 
@@ -72,10 +73,10 @@ function getQueryObject(queryString: string) {
   const _queryString = queryString.slice(1);
   const queryParts = _queryString.split('&');
   const queryObject: Query = {};
-  queryParts.forEach(part => {
+  for (const part of queryParts) {
     const [key, value] = part.split('=');
     if (key && value) queryObject[key] = value;
-  });
+  }
 
   return queryObject;
 }

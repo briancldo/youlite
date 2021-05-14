@@ -9,15 +9,18 @@ import {
   PlaylistReducer,
 } from './store.types';
 
-function cachePlaylistList(state: PlaylistState, action: CachePlaylistListAction) {
+function cachePlaylistList(
+  state: PlaylistState,
+  action: CachePlaylistListAction
+) {
   const { playlistsData } = action;
   const playlistsDataMap: PlaylistState = {};
-  playlistsData.forEach(playlist => {
+  for (const playlist of playlistsData) {
     playlistsDataMap[playlist.id] = {
       metadata: playlist,
       videos: [],
     };
-  });
+  }
 
   const newState = {
     ...state,
@@ -27,7 +30,10 @@ function cachePlaylistList(state: PlaylistState, action: CachePlaylistListAction
   return newState;
 }
 
-function cachePlaylistVideos(state: PlaylistState, action: CachePlaylistVideosAction) {
+function cachePlaylistVideos(
+  state: PlaylistState,
+  action: CachePlaylistVideosAction
+) {
   const { playlistId, videos } = action;
 
   const newState = {
@@ -41,7 +47,10 @@ function cachePlaylistVideos(state: PlaylistState, action: CachePlaylistVideosAc
   return newState;
 }
 
-function restorePlaylists(state: PlaylistState, action: RestorePlaylistsAction) {
+function restorePlaylists(
+  state: PlaylistState,
+  action: RestorePlaylistsAction
+) {
   return action.playlists;
 }
 
@@ -53,7 +62,10 @@ const handlers: PlaylistReducerCollection = {
 
 const initialState: PlaylistState = {};
 
-export default function reducer(state: PlaylistState = initialState, action: PlaylistAction) {
+export default function reducer(
+  state: PlaylistState = initialState,
+  action: PlaylistAction
+) {
   const handler = handlers[action.type];
   if (!handler) return state;
   return handler(state, action);

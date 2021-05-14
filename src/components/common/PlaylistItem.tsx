@@ -3,14 +3,19 @@ import InteractiveCard from './InteractiveCard';
 
 import { useRedirect, routes } from '../../utils/navigation';
 import './PlaylistItem.css';
+import { Playlist } from '../../utils/api.transform.types';
 
-export default function PlaylistItem(props) {
-  const { playlistData } = props
-  const { thumbnailUrl, title } = playlistData;
+interface PlaylisItemProps {
+  playlistData: Playlist;
+}
+
+const PlaylistItem: React.FC<PlaylisItemProps> = (props) => {
+  const { playlistData } = props;
+  const { thumbnailUrl, title, id } = playlistData;
   const navigateToPlaylist = useRedirect(routes.playlist);
 
   function navigateToPlaylistWithState() {
-    navigateToPlaylist({}, {}, { playlistTitle: title, playlistId: playlistData.id });
+    navigateToPlaylist({}, {}, { playlistTitle: title, playlistId: id });
   }
 
   return (
@@ -25,4 +30,6 @@ export default function PlaylistItem(props) {
       </div>
     </div>
   );
-}
+};
+
+export default PlaylistItem;

@@ -5,20 +5,19 @@ import { Video } from '../../utils/youtube.api.types';
 
 export interface PlaylistState {
   [id: string]: {
-    metadata: Playlist,
-    videos: Video[],
+    metadata: Playlist;
+    videos: Video[];
   };
 }
 
 export interface AuthState {
-  token?: String,
+  token?: string;
 }
 
 export interface StoreState {
-  playlist?: PlaylistState,
-  auth?: AuthState,
+  playlist?: PlaylistState;
+  auth?: AuthState;
 }
-
 
 // playlist reducer
 
@@ -28,27 +27,29 @@ export interface CachePlaylistListAction {
 }
 
 export interface CachePlaylistVideosAction {
-  type: 'CACHE_PLAYLIST_VIDEOS',
-  playlistId: string,
-  videos: Video[],
+  type: 'CACHE_PLAYLIST_VIDEOS';
+  playlistId: string;
+  videos: Video[];
 }
 
 export interface RestorePlaylistsAction {
-  type: 'RESTORE_PLAYLISTS',
+  type: 'RESTORE_PLAYLISTS';
   playlists: PlaylistState;
 }
 
-export type PlaylistAction = 
-  CachePlaylistListAction |
-  CachePlaylistVideosAction |
-  RestorePlaylistsAction;
+export type PlaylistAction =
+  | CachePlaylistListAction
+  | CachePlaylistVideosAction
+  | RestorePlaylistsAction;
 
-export type PlaylistReducer = (state: PlaylistState, action: PlaylistAction) => PlaylistState;
+export type PlaylistReducer = (
+  state: PlaylistState,
+  action: PlaylistAction
+) => PlaylistState;
 
 export interface PlaylistReducerCollection {
   [actionType: string]: PlaylistReducer;
 }
-
 
 // auth reducer
 
@@ -68,6 +69,5 @@ export type AuthReducer = (state: AuthState, action?: AuthAction) => AuthState;
 export interface AuthReducerCollection {
   [actionType: string]: AuthReducer;
 }
-
 
 export type StoreAction = PlaylistAction | AuthAction;

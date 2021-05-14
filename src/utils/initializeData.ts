@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 function useInitializeState<T>(
   initializer: (...args: typeof initializerArgs) => T | Promise<T>,
   initializerArgs: any[],
-  initialState?: T
+  initialState: T
 ) {
   const stateObj = useState(initialState);
 
@@ -12,9 +12,9 @@ function useInitializeState<T>(
       const args = initializerArgs || [];
       const data = await initializer(...args);
       stateObj[1](data);
-    }
+    };
     initialize();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return stateObj;
@@ -23,7 +23,7 @@ function useInitializeState<T>(
 function useInitializeRef<T>(
   initializer: (...args: typeof initializerArgs) => T | Promise<T>,
   initializerArgs: any[],
-  initialValue?: T
+  initialValue: T
 ) {
   const ref = useRef(initialValue);
 
@@ -39,7 +39,4 @@ function useInitializeRef<T>(
   return ref;
 }
 
-export {
-  useInitializeState,
-  useInitializeRef,
-};
+export { useInitializeState, useInitializeRef };
