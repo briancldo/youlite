@@ -3,8 +3,13 @@ import Grid from '@material-ui/core/Grid';
 
 import VideoItem from './VideoItem';
 import './VideosList.css';
+import { Video } from '../../utils/youtube.api.types';
 
-export default function VideosList(props) {
+interface VideosListProps {
+  videos: Video[];
+}
+
+const VideosList: React.FC<VideosListProps> = (props) => {
   const { videos } = props;
 
   return (
@@ -18,4 +23,6 @@ export default function VideosList(props) {
       }
     </Grid>
   );
-}
+};
+
+export default VideosList;
