@@ -16,6 +16,7 @@ const VideosList: React.FC<VideosListProps> = (props) => {
     <Grid container className='video-list'>
       {videos.map((video, index) => (
         <Grid
+          item
           sm={12}
           md={4}
           lg={3}
