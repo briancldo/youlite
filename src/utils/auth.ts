@@ -1,8 +1,12 @@
-import { GoogleLoginResponse } from 'react-google-login';
+import {
+  GoogleLoginResponse,
+  GoogleLoginResponseOffline,
+} from 'react-google-login';
 import { setToken } from '../data/token';
 
 type LoginProvider = 'google';
-type LoginResponse = GoogleLoginResponse;
+type GoogleResponse = GoogleLoginResponse | GoogleLoginResponseOffline;
+type LoginResponse = GoogleResponse;
 
 async function authenticate(
   provider: LoginProvider,
@@ -15,7 +19,9 @@ async function authenticate(
 }
 
 const providerHandlers = {
-  google: async (googleResponse: GoogleLoginResponse) => {
+  google: async (googleResponse: GoogleResponse) => {
+    if (!('accessToken' in googleResponse))
+      return alert('No internet connection.');
     const token = googleResponse.accessToken;
     setToken(token);
   },

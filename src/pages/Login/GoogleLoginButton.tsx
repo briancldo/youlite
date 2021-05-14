@@ -1,5 +1,9 @@
 import React from 'react';
-import { GoogleLogin, GoogleLoginResponse } from 'react-google-login';
+import {
+  GoogleLogin,
+  GoogleLoginResponse,
+  GoogleLoginResponseOffline,
+} from 'react-google-login';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
 import { useReplace, routes } from '../../utils/navigation';
@@ -17,9 +21,9 @@ const LoginButton: React.FC = () => {
   const navigateToHome = useReplace(routes.home);
 
   function authenticate() {
-    return async (response: GoogleLoginResponse) => {
+    return (response: GoogleLoginResponse | GoogleLoginResponseOffline) => {
       try {
-        await backendAuth.authenticate('google', response);
+        backendAuth.authenticate('google', response);
       } catch (error) {
         console.error('Authentication error:', error);
       }
@@ -31,7 +35,7 @@ const LoginButton: React.FC = () => {
     <GoogleLogin
       clientId={config.get('oauth.google.clientId')}
       buttonText='Sign in with Google'
-      onSuccess={authenticate}
+      onSuccess={authenticate()}
       cookiePolicy='single_host_origin'
       className={classes.socialLoginButton}
       scope='https://www.googleapis.com/auth/youtube.readonly'
