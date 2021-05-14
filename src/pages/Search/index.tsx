@@ -9,7 +9,7 @@ const SearchPage: React.FC = () => {
   const results = useFetch("get", `/search${queryString}`);
   console.log({ results });
 
-  return <h1>Search results for "{query}"</h1>;
+  return <h1>Search results for `&quot;`{query}`&quot;`</h1>;
 };
 
 export default SearchPage;

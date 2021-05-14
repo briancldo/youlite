@@ -11,15 +11,11 @@ interface PlaylisItemProps {
 
 const PlaylistItem: React.FC<PlaylisItemProps> = (props) => {
   const { playlistData } = props;
-  const { thumbnailUrl, title } = playlistData;
+  const { thumbnailUrl, title, id } = playlistData;
   const navigateToPlaylist = useRedirect(routes.playlist);
 
   function navigateToPlaylistWithState() {
-    navigateToPlaylist(
-      {},
-      {},
-      { playlistTitle: title, playlistId: playlistData.id }
-    );
+    navigateToPlaylist({}, {}, { playlistTitle: title, playlistId: id });
   }
 
   return (

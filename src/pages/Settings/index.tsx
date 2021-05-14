@@ -6,12 +6,6 @@ import { set } from "../../data/playlist";
 import "./index.css";
 
 const SettingsPage: React.FC = () => {
-  function clearPlaylistCache() {
-    set.clearPlaylistCache();
-    window.location.reload();
-    alert("Cache cleared.");
-  }
-
   return (
     <div className="settings-page-main">
       <Button
@@ -34,3 +28,9 @@ const SettingsPage: React.FC = () => {
 };
 
 export default SettingsPage;
+
+function clearPlaylistCache() {
+  set.clearPlaylistCache();
+  window.location.reload();
+  alert("Cache cleared.");
+}

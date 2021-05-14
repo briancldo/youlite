@@ -48,6 +48,7 @@ function applyParameters(route: string, params: Params, query: Query) {
   }
 
   const queryString = getQueryString(query);
+  // eslint-disable-next-line unicorn/prefer-spread
   return parameterized.join("/").concat(`?${queryString}`);
 }
 
