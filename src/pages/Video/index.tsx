@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import Accordion from '@material-ui/core/Accordion';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
+import Button from '@material-ui/core/Button';
 import ExpandIcon from '@material-ui/icons/ExpandMoreRounded';
 
 import { getQueryObject } from '../../utils/navigation';
@@ -30,18 +28,16 @@ const VideoUI: React.FC<Video> = (props) => {
       ></iframe>
       <h1>{title}</h1>
       <p>{uploader}</p>
-      <Accordion
-        expanded={descriptionExpanded}
-        onChange={toggleDescription}
-        className='video-description-accordion'
+      <Button
+        onClick={toggleDescription}
+        className='description-toggle'
+        endIcon={<ExpandIcon />}
       >
-        <AccordionSummary expandIcon={<ExpandIcon />}>
-          <p>Description</p>
-        </AccordionSummary>
-        <AccordionDetails>
-          <p>{description}</p>
-        </AccordionDetails>
-      </Accordion>
+        Description
+      </Button>
+      <div hidden={descriptionExpanded} className='video-description-accordion'>
+        <p>{description}</p>
+      </div>
     </div>
   );
 };
