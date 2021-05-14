@@ -4,7 +4,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 
 import { useReplace, routes } from '../../utils/navigation';
 import * as backendAuth from '../../utils/auth';
-import config from 'env';
+import config from '../../env/config';
 
 const useStyles = makeStyles({
   socialLoginButton: {
