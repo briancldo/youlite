@@ -28,6 +28,7 @@ export default function App() {
       {process.env.NODE_ENV === 'development' && (
         <Button onClick={printState}>Print State</Button>
       )}
+      Commit hash: {process.env.REACT_APP_COMMIT_HASH}
       <Provider store={store}>
         <Router>
           <Switch>
