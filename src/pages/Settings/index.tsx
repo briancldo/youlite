@@ -9,22 +9,27 @@ import './index.css';
 const SettingsPage: React.FC = () => {
   return (
     <div className='settings-page-main'>
-      <InfoModalButton />
-      <Button
-        onClick={clearPlaylistCache}
-        variant='contained'
-        color='secondary'
-        className='settings-page-button'
-      >
-        Clear cache
-      </Button>
-      <Button
-        variant='contained'
-        onClick={removeToken}
-        className='settings-page-button'
-      >
-        Logout
-      </Button>
+      <div className='settings-page-header'>
+        <InfoModalButton />
+      </div>
+      <div className='settings-page-content' />
+      <div className='settings-page-footer'>
+        <Button
+          onClick={clearPlaylistCache}
+          variant='contained'
+          color='secondary'
+          className='settings-page-button'
+        >
+          Clear cache
+        </Button>
+        <Button
+          variant='contained'
+          onClick={removeToken}
+          className='settings-page-button'
+        >
+          Logout
+        </Button>
+      </div>
     </div>
   );
 };
