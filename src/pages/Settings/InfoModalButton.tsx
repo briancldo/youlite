@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import InfoIcon from '@material-ui/icons/Info';
 
 import InfoModal from './InfoModal';
 
@@ -16,7 +17,9 @@ const InfoModalButton: React.FC = () => {
 
   return (
     <>
-      <Button onClick={openInfoModal}>View Info</Button>
+      <IconButton onClick={openInfoModal}>
+        <InfoIcon />
+      </IconButton>
       <InfoModal open={isInfoModalOpen} closeInfoModal={closeInfoModal} />
     </>
   );
