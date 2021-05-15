@@ -8,6 +8,7 @@ import './index.css';
 const SettingsPage: React.FC = () => {
   return (
     <div className='settings-page-main'>
+      <p>Commit hash: {process.env.REACT_APP_COMMIT_HASH}</p>
       <Button
         onClick={clearPlaylistCache}
         variant='contained'
