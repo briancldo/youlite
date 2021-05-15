@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 
+import InfoModalButton from './InfoModalButton';
 import { removeToken } from '../../data/token';
 import { set } from '../../data/playlist';
 import './index.css';
@@ -8,7 +9,7 @@ import './index.css';
 const SettingsPage: React.FC = () => {
   return (
     <div className='settings-page-main'>
-      <p>Commit hash: {process.env.REACT_APP_COMMIT_HASH}</p>
+      <InfoModalButton />
       <Button
         onClick={clearPlaylistCache}
         variant='contained'
